@@ -1,7 +1,7 @@
 import QRCode from "react-qr-code";
 
 const QrCodeGenerator = ({ numeroMesa }) => {
-  const url = `http://localhost:3000/?mesa=${numeroMesa}`;
+  const url = `https://cardapio-daluthi.vercel.app/?mesa=${numeroMesa}`;
 
   return (
     <div>
