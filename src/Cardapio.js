@@ -19,6 +19,10 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { useTheme } from '@mui/material/styles';
+
 
 // Importação manual das imagens
 import pizza from "./png/pizza.jpeg";
@@ -36,6 +40,8 @@ import bruschetta from "./png/bruschetta.jpg";
 import bolinho from "./png/bolinho.jpg";
 import sorvete from "./png/sorvete.jpg";
 import brownie from "./png/brownie.jpg";
+
+
 
 // Mapeamento dos itens com suas imagens correspondentes
 const imagensItens = {
@@ -140,7 +146,7 @@ const cardapioItens = {
     { id: 12, nome: "Água Mineral", preco: 5.0 },
     { id: 13, nome: "Cerveja Artesanal", preco: 15.0 },
     { id: 14, nome: "Vinho Tinto", preco: 30.0 },
-  ],
+  ]
 };
 
 const Cardapio = ({ adicionarAoCarrinho }) => {
@@ -172,6 +178,12 @@ const Cardapio = ({ adicionarAoCarrinho }) => {
       );
     }
   }, [scrollPosition]);
+
+ 
+
+const theme = useTheme();
+const darkMode = theme.palette.mode === 'dark';
+
 
   // Função para lidar com o scroll do carrossel
   const handleCarouselScroll = () => {
@@ -379,23 +391,27 @@ const Cardapio = ({ adicionarAoCarrinho }) => {
           onTouchEnd={handleTouchEnd}
         >
           {categorias.map((categoria, index) => (
+            
+
             <Button
-              key={categoria}
-              className="category-button"
-              onClick={() => handleCategoriaClick(categoria, index)}
-              variant={categoria === categoriaSelecionada ? "contained" : "outlined"}
-              color="secondary"
-              sx={{
-                mx: 0.5,
-                my: 1,
-                whiteSpace: "nowrap",
-                transition: "transform 0.2s, background-color 0.3s",
-                transform: categoria === categoriaSelecionada ? "scale(1.05)" : "scale(1)",
-                minWidth: "120px",
-              }}
-            >
-              {categoria}
-            </Button>
+            key={categoria}
+            className="category-button"
+            onClick={() => handleCategoriaClick(categoria, index)}
+            variant={categoria === categoriaSelecionada ? "contained" : "outlined"}
+            sx={{
+              mx: 0.5,
+              my: 1,
+              whiteSpace: "nowrap",
+              background: darkMode ? "#DCDCDC" : "#1C1C1C",
+              color: darkMode ? "#1C1C1C" : "#DCDCDC", // <-- Agora está dentro do sx!
+              transition: "transform 0.2s",
+              transform: categoria === categoriaSelecionada ? "scale(1.05)" : "scale(1)",
+              minWidth: "120px",
+            }}
+          >
+            {categoria}
+          </Button>
+          
           ))}
         </Box>
         
