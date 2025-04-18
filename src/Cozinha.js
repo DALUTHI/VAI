@@ -32,7 +32,7 @@ const Cozinha = () => {
   const mesaSelecionada = searchParams.get("mesa");
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:3001"); // Substitua pelo seu servidor WebSocket
+    const newSocket = new WebSocket("ws:https://cardapio-daluthi.vercel.app:3001"); // Substitua pelo seu servidor WebSocket
 
     socket.onmessage = (event) => {
       const novoPedido = JSON.parse(event.data);
