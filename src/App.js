@@ -175,7 +175,7 @@ function App() {
   });
 
   useEffect(() => {
-    const newSocket = new WebSocket("ws://localhost:3001");
+    const newSocket = new WebSocket("ws:https://cardapio-daluthi.vercel.app:3001");
 
     newSocket.onopen = () => console.log("Conexão WebSocket estabelecida!");
     newSocket.onerror = (error) => console.error("Erro WebSocket:", error);
