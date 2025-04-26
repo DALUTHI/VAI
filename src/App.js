@@ -112,7 +112,7 @@ function App() {
             background: darkMode 
               ? "linear-gradient(45deg, #121212 30%, #212121 90%)"
               : "linear-gradient(45deg, #FFFFFF 30%, #F5F5F5 90%)",
-            color: darkMode ? "#FFFFFF" : "#000000", // Adiciona cor do texto
+            color: darkMode ? "#74164" : "#000000", // Adiciona cor do texto
           },
         },
       },
@@ -175,7 +175,7 @@ function App() {
   });
 
   useEffect(() => {
-    const newSocket = new WebSocket("ws://localhost:3001");
+    const newSocket = new WebSocket("wss://cardapio-daluthi.vercel.app");
 
     newSocket.onopen = () => console.log("Conexão WebSocket estabelecida!");
     newSocket.onerror = (error) => console.error("Erro WebSocket:", error);
@@ -434,7 +434,7 @@ function App() {
                           <PhoneIcon />
                         </IconButton>
                         <IconButton 
-                          sx={{ 
+                          sx={{
                             backgroundColor: "rgba(255,255,255,0.8)", 
                             color: "#25D366",
                             "&:hover": { backgroundColor: "rgba(255,255,255,0.9)" }
