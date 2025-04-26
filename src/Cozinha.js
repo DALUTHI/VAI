@@ -32,11 +32,15 @@ const Cozinha = () => {
   const mesaSelecionada = searchParams.get("mesa");
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:3001"); // Substitua pelo seu servidor WebSocket
+    // Altere para seu endpoint de produção
+    const socket = new WebSocket("wss://cardapio-daluthi.vercel.app/cozinha");
 
     socket.onmessage = (event) => {
       const novoPedido = JSON.parse(event.data);
-      setPedidos((prevPedidos) => [...prevPedidos, { ...novoPedido, status: "Em preparo" }]);
+      setPedidos((prevPedidos) => [...prevPedidos, {
+        ...novoPedido,
+        status: "Em preparo"
+      }]);
     };
 
     return () => socket.close();
